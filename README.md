@@ -48,4 +48,15 @@ Una vez creada, independientemente de si la tenemos en dockerhub o solo en local
 
 Deberia daros un error de conexión a la BBDD.
 
-## Continuación de proyecto en rama mysql
+## Unión con una BBDD
+
+Como habreis podido deducir, esta aplicación requiere de una base de datos para funcionar.
+
+Crearemos un docker compose que tenga dos servicios, nuestra aplicación y nuestra base de datos.
+
+A tener en cuenta:
+
+Nuestra aplicación debe tener una variable "MYSQL_HOST" que apunte al nombre del servicio de la base de datos.
+
+Nuestra base de datos debe tener el siguiente volumen para persistir los datos llamado "mysql-data" que apunte a "/var/lib/mysql" y otro volumen para inicializar nuestro esquema de base de datos el cual debera mapear nuestro "db.sh" a "/docker-entrypoint-initdb.d/db.sh"
+
