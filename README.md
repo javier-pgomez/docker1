@@ -60,3 +60,12 @@ Nuestra aplicación debe tener una variable "MYSQL_HOST" que apunte al nombre de
 
 Nuestra base de datos debe tener el siguiente volumen para persistir los datos llamado "mysql-data" que apunte a "/var/lib/mysql" y otro volumen para inicializar nuestro esquema de base de datos el cual debera mapear nuestro "db.sh" a "/docker-entrypoint-initdb.d/db.sh"
 
+## TRAEFIK
+
+Añadir labels:
+
+labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.service.rule=Host(`formacion.ejemplo.com`)"
+      - "traefik.http.routers.service.entrypoints=web"
+      - "traefik.http.services.service.loadbalancer.server.port=PORT"
